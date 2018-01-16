@@ -15,6 +15,22 @@ pip install git+https://github.com/ikreymer/pywb.git
 
 Using the pywb tools in http proxy mode with Servo requires the `proxychains` command (installed in Debian-based systems by `apt-get install proxychains`).
 
+
+## Playing an existing archive
+
+In this example we'll play the (WBEZ)[https://www.wbez.org/] archive.
+
+In one window, run the `wayback` server on the WBEZ archive:
+```
+wayback --proxy WBEZ
+```
+
+Then, run servo with this http proxy, so when you navigtate to a recorded web site it should take you to the recorded version:
+```
+proxychains ${SERVO_DIRECTORY}/mach run -r --certificate-path proxy-certs/pywb-ca.pem https://www.wbez.org/
+```
+
+
 ## Adding a new archive
 
 In this example we'll add a web achive for an example web site (example.com)[https://www.example.com/].
@@ -36,12 +52,12 @@ proxychains ${SERVO_DIRECTORY}/mach run -r --certificate-path proxy-certs/pywb-c
 
 Once the site has finished loading, exit Servo and the `wayback` server.
 
-To test your archive, run the `wayback` server in playback mode:
+To test your archive, follow the instructions for playing an archive. In one window:
 ```
 wayback --proxy Example
 ```
 
-Again, run servo with this http proxy, now when you navigtate to the web site it should take you to the recorded version.
+and in another:
 ```
 proxychains ${SERVO_DIRECTORY}/mach run -r --certificate-path proxy-certs/pywb-ca.pem https://www.example.com/
 ```
