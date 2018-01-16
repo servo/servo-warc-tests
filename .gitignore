@@ -1,0 +1,5 @@
+*~
+venv/*
+proxy-certs/*
+static/*
+templates/*
