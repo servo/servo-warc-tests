@@ -17,31 +17,31 @@ Using the pywb tools in http proxy mode with Servo requires the `proxychains` co
 
 ## Adding a new archive
 
-In this example we'll add a web achive for the Chicago public radio station (WBEZ)[https://www.wbez.org/].
+In this example we'll add a web achive for an example web site (example.com)[https://www.example.com/].
 
-First create a collection for the WBEZ files:
+First create a collection for the Example files:
 ```
-wb-manager init WBEZ
+wb-manager init Example
 ```
 
 Now start recording the web archive:
 ```
-wayback --proxy WBEZ --live --proxy-record --autoindex
+wayback --proxy Example --live --proxy-record --autoindex
 ```
 
 In another window, run Servo with this http proxy, and navigate to the web site:
 ```
-proxychains ${SERVO_DIRECTORY}/mach run -r --certificate-path proxy-certs/pywb-ca.pem https://www.wbez.org/
+proxychains ${SERVO_DIRECTORY}/mach run -r --certificate-path proxy-certs/pywb-ca.pem https://www.example.com/
 ```
 
 Once the site has finished loading, exit Servo and the `wayback` server.
 
 To test your archive, run the `wayback` server in playback mode:
 ```
-wayback --proxy WBEZ
+wayback --proxy Example
 ```
 
 Again, run servo with this http proxy, now when you navigtate to the web site it should take you to the recorded version.
 ```
-proxychains ${SERVO_DIRECTORY}/mach run -r --certificate-path proxy-certs/pywb-ca.pem https://www.wbez.org/
+proxychains ${SERVO_DIRECTORY}/mach run -r --certificate-path proxy-certs/pywb-ca.pem https://www.example.com/
 ```
