@@ -19,7 +19,7 @@ OUTPUT="${OUTPUT_DIR}/warc-tests-${DATE}.csv"
 PORT="8321"
 
 # The CSV column names, which should match what's in user-agent-js
-CSV_COLUMNS="testType,date,url,\
+CSV_COLUMNS="archive,date,url,\
 navigationStart,domLoading,domInteractive,\
 topLevelDomComplete,domComplete,\
 loadEventStart,loadEventEnd,\
@@ -44,7 +44,7 @@ while IFS=: read ARCHIVE URL; do
     while ! PID=$(lsof -Pi :${PORT} -t); do sleep 1; done
 
     # Run a proxified servo on the URL, and save any WARC lines in the output file
-    timeout 2m proxychains ${SERVO} ${URL} | grep WARC >> ${OUTPUT}
+    timeout 2m proxychains ${SERVO} ${URL} | grep WARC | sed -e "s/WARC/${ARCHIVE}/" >> ${OUTPUT}
 
     # Kill the wayback server
     kill ${PID}
