@@ -18,7 +18,7 @@ Using the pywb tools in http proxy mode with Servo requires the `proxychains` co
 
 ## Playing an existing archive
 
-In this example we'll play the (WBEZ)[https://www.wbez.org/] archive.
+In this example we'll play the [WBEZ](https://www.wbez.org/) archive.
 
 In one window, run the `wayback` server on the WBEZ archive:
 ```
@@ -33,7 +33,7 @@ proxychains ${SERVO_DIRECTORY}/mach run -r --certificate-path proxy-certs/pywb-c
 
 ## Adding a new archive
 
-In this example we'll add a web achive for an example web site (example.com)[https://www.example.com/].
+In this example we'll add a web achive for an example web site [example.com](https://www.example.com/).
 
 First create a collection for the Example files:
 ```
