@@ -29,7 +29,7 @@ isTopLevel"
 trap 'kill $(jobs -pr)' SIGINT SIGTERM
 
 # Write the CSV column names
-echo CSV_COLUMNS > ${OUTPUT}
+echo ${CSV_COLUMNS} > ${OUTPUT}
 
 # Read the archives from the ARCHIVE file
 while IFS=: read ARCHIVE URL; do
