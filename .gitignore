@@ -3,3 +3,4 @@ venv/*
 proxy-certs/*
 static/*
 templates/*
+output/*
