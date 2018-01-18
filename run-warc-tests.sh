@@ -29,12 +29,15 @@ isTopLevel"
 trap 'kill $(jobs -pr)' SIGINT SIGTERM
 
 # Write the CSV column names
+echo "Creating output file ${OUTPUT}"
 echo ${CSV_COLUMNS} > ${OUTPUT}
 
 # Read the archives from the ARCHIVE file
 while IFS=: read ARCHIVE URL; do
 
     # Start the wayback server in tx1he background
+    echo ""
+    echo "Testing ${URL} from archive ${ARCHIVE}"
     wayback --proxy ${ARCHIVE} --port ${PORT} > /dev/null 2>&1 &
 
     # Wait for the server to start up
