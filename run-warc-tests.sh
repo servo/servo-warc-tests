@@ -13,7 +13,7 @@ SERVO="${SERVO_DIR}/mach run -r -z \
   --pref dom.testperf.enabled"
 
 OUTPUT_DIR="output"
-OUTPUT="${OUTPUT_DIR}/warc.tests-${DATE}.csv"
+OUTPUT="${OUTPUT_DIR}/warc-tests-${DATE}.csv"
 
 # The port number, which should match what's in proxychains.conf
 PORT="8321"
