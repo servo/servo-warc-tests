@@ -4,15 +4,18 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-DATE=$(date +%Y-%m-%d)
+DATE=${DATE:-$(date +%Y-%m-%d)}
 
-SERVO_DIR="../servo"
+ARCHIVE_DIR=$(dirname $(realpath $0))
+ARCHIVES="${ARCHIVE_DIR}/ARCHIVES"
+
+SERVO_DIR=$(realpath ${SERVO_DIR:-../servo})
 SERVO="${SERVO_DIR}/mach run -r -z \
-  --userscripts user-agent-js \
-  --certificate-path proxy-certs/pywb-ca.pem \
+  --userscripts ${ARCHIVE_DIR}/user-agent-js \
+  --certificate-path ${ARCHIVE_DIR}/proxy-certs/pywb-ca.pem \
   --pref dom.testperf.enabled"
 
-OUTPUT_DIR="output"
+OUTPUT_DIR=$(realpath ${OUTPUT_DIR:-output})
 OUTPUT="${OUTPUT_DIR}/warc-tests-${DATE}.csv"
 
 # The port number, which should match what's in proxychains.conf
@@ -27,6 +30,9 @@ isTopLevel"
 
 # Stop the wayback server if we interrupt the script
 trap 'kill $(jobs -pr)' SIGINT SIGTERM
+
+# wayback and proxychains are much happier if they're run from the directory with their config files
+cd ${ARCHIVE_DIR}
 
 # Write the CSV column names
 echo "Creating output file ${OUTPUT}"
@@ -49,5 +55,4 @@ while IFS=: read ARCHIVE URL; do
     # Kill the wayback server
     kill ${PID}
 
-done < "ARCHIVES"
-
+done < ${ARCHIVES}
