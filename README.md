@@ -2,6 +2,8 @@
 
 This directory contains web archives, together with scripts which use them for performance testing of Servo.
 
+[![Google Data Studio report](https://raw.githubusercontent.com/servo/servo-warc-tests/master/gds-screenshot.png)](https://datastudio.google.com/open/1eYJrJUUbLmvxEu_I-bM7s4fA-HlRvk-p)
+
 ## Web archives
 
 [WARC web archives](http://iipc.github.io/warc-specifications/) are a de facto standard for archiving web content. They are the storage format for the Internet Archive [Wayback Machine](https://archive.org/web/) and supported by the [Library of Congress](http://www.loc.gov/preservation/digital/formats/fdd/fdd000236.shtml).
