@@ -6,16 +6,16 @@
 
 DATE=${DATE:-$(date +%Y-%m-%d)}
 
-ARCHIVE_DIR=$(dirname $(realpath $0))
+ARCHIVE_DIR=$(dirname $(readlink -f $0))
 ARCHIVES="${ARCHIVE_DIR}/ARCHIVES"
 
-SERVO_DIR=$(realpath ${SERVO_DIR:-../servo})
+SERVO_DIR=$(readlink -f ${SERVO_DIR:-../servo})
 SERVO="${SERVO_DIR}/mach run -r -z \
   --userscripts ${ARCHIVE_DIR}/user-agent-js \
   --certificate-path ${ARCHIVE_DIR}/proxy-certs/pywb-ca.pem \
   --pref dom.testperf.enabled"
 
-OUTPUT_DIR=$(realpath ${OUTPUT_DIR:-output})
+OUTPUT_DIR=$(readlink -f ${OUTPUT_DIR:-output})
 OUTPUT="${OUTPUT_DIR}/warc-tests-${DATE}.csv"
 
 # The port number, which should match what's in proxychains.conf
