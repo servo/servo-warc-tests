@@ -50,7 +50,7 @@ while IFS=: read ARCHIVE URL; do
     while ! PID=$(lsof -Pi :${PORT} -t); do sleep 1; done
 
     # Run a proxified servo on the URL, and save any WARC lines in the output file
-    timeout 2m proxychains ${SERVO} ${URL} | grep WARC | sed -e "s/WARC/${ARCHIVE}/" >> ${OUTPUT}
+    timeout 5m proxychains ${SERVO} ${URL} | grep WARC | sed -e "s/WARC/${ARCHIVE}/" >> ${OUTPUT}
 
     # Kill the wayback server
     kill ${PID}
