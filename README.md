@@ -10,7 +10,7 @@ This directory contains web archives, together with scripts which use them for p
 
 Web archives can be [created and viewed] in Servo, using the [pywb](https://pywb.readthedocs.io) tools, which can be installed using:
 ```
-vitualenv -p python3 venv
+virtualenv -p python3 venv
 source venv/bin/activate
 pip install git+https://github.com/ikreymer/pywb.git
 ```
