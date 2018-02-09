@@ -17,6 +17,16 @@ pip install git+https://github.com/ikreymer/pywb.git
 
 Using the pywb tools in http proxy mode with Servo requires the `proxychains` command (installed in Debian-based systems by `apt-get install proxychains`).
 
+### Proxychains configuration
+
+By default `wayback` will start its proxy server listening on port 8080.
+So `proxychains` needs to be configured with
+
+```
+http    127.0.0.1 8080
+```
+
+in the `[ProxyList]` section of `/etc/proxychains.conf`
 
 ## Playing an existing archive
 
