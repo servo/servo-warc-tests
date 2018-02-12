@@ -24,8 +24,10 @@ In this example we'll play the [WBEZ](https://www.wbez.org/) archive.
 
 In one window, run the `wayback` server on the WBEZ archive:
 ```
-wayback --proxy WBEZ
+wayback --proxy WBEZ --port 8321
 ```
+
+The port number (8321 here) should match the one in proxychains.conf.
 
 Then, run servo with this http proxy, so when you navigtate to a recorded web site it should take you to the recorded version:
 ```
@@ -44,7 +46,7 @@ wb-manager init Example
 
 Now start recording the web archive:
 ```
-wayback --proxy Example --live --proxy-record --autoindex
+wayback --proxy Example --live --proxy-record --autoindex --port 8321
 ```
 
 In another window, run Servo with this http proxy, and navigate to the web site:
@@ -56,7 +58,7 @@ Once the site has finished loading, exit Servo and the `wayback` server.
 
 To test your archive, follow the instructions for playing an archive. In one window:
 ```
-wayback --proxy Example
+wayback --proxy Example --port 8321
 ```
 
 and in another:
