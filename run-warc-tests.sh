@@ -53,7 +53,7 @@ while IFS=: read ARCHIVE URL; do
     # Start the wayback server in tx1he background
     echo ""
     echo "Testing ${URL} from archive ${ARCHIVE}"
-    wayback --proxy "${ARCHIVE}" --port "${PORT}" > /dev/null 2>&1 &
+    wayback --proxy "${ARCHIVE}" --port "${PORT}" > wayback.log 2>&1 &
 
     # Wait for the server to start up
     while ! PID=$(lsof -Pi :"${PORT}" -t); do echo "Waiting for wayback server"; sleep 1; done
