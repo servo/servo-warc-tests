@@ -44,6 +44,9 @@ cd "${SCRIPT_DIR}"
 echo "Creating output file ${OUTPUT}"
 echo "${CSV_COLUMNS}" > "${OUTPUT}"
 
+# Kill any wayback server that is currently running
+while PID=$(lsof -Pi :"${PORT}" -t); do echo "Killing ${PID}"; kill "${PID}"; sleep 1; done
+
 # Read the archives from the ARCHIVE file
 while IFS=: read ARCHIVE URL; do
 
