@@ -60,7 +60,10 @@ while IFS=: read ARCHIVE URL; do
 
     # Run a proxified servo on the URL, and save any WARC lines in the output file
     echo Running "${SERVO_CMD[@]}" "${URL}"
-    timeout 5m proxychains "${SERVO_CMD[@]}" "${URL}" | grep WARC | sed -e "s/WARC/${ARCHIVE}/" >> "${OUTPUT}"
+    timeout 5m proxychains "${SERVO_CMD[@]}" "${URL}" \
+	| grep WARC \
+	| sed -e "s/WARC/${ARCHIVE}/" >> "${OUTPUT}" \
+       || echo "Servo timed out"
 
     # Kill the wayback server
     kill "${PID}"
