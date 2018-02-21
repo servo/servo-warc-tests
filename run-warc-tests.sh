@@ -48,7 +48,7 @@ echo "${CSV_COLUMNS}" > "${OUTPUT}"
 while PID=$(lsof -Pi :"${PORT}" -t); do echo "Killing ${PID}"; kill "${PID}"; sleep 1; done
 
 # Read the archives from the ARCHIVE file
-while IFS=: read ARCHIVE URL; do
+while IFS=: read -r ARCHIVE URL; do
 
     # Start the wayback server in tx1he background
     echo ""
