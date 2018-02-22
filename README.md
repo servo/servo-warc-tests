@@ -14,9 +14,25 @@ virtualenv -p python3 venv
 source venv/bin/activate
 pip install git+https://github.com/ikreymer/pywb.git
 ```
+### proxychains
 
-Using the pywb tools in http proxy mode with Servo requires the `proxychains` command (installed in Debian-based systems by `apt-get install proxychains`).
+Using the pywb tools in http proxy mode with Servo requires the `proxychains` command.
 
+#### Debian-based systems:
+
+```sh
+apt-get install proxychains
+```
+
+run with `proxychains`
+
+#### MacOS:
+
+```sh
+brew install proxychains-ng
+```
+
+run with `proxychains4`
 
 ## Playing an existing archive
 
