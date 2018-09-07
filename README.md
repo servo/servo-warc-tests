@@ -55,7 +55,7 @@ proxychains ${SERVO_DIRECTORY}/mach run -r --certificate-path proxy-certs/pywb-c
 
 In this example we'll add a web achive for an example web site [example.com](https://www.example.com/).
 
-First create a collection for the Example files:
+First create a collection for the Example files (If you installed the dependencies inside a virtual env, go into that env and then do the following):
 ```
 wb-manager init Example
 ```
@@ -65,19 +65,29 @@ Now start recording the web archive:
 wayback --proxy Example --live --proxy-record --autoindex --port 8321
 ```
 
-In another window, run Servo with this http proxy, and navigate to the web site:
+In another window, clone and cd into the servo-warc-tests repository:
+```sh
+git clone https://github.com/servo/servo-warc-tests.git
+cd servo-warc-tests
 ```
-proxychains ${SERVO_DIRECTORY}/mach run -r --certificate-path proxy-certs/pywb-ca.pem https://www.example.com/
+Run Servo with this http proxy, and navigate to the web site:
 ```
+proxychains ${SERVO_DIRECTORY}/mach run -r --certificate-path ~/proxy-certs/pywb-ca.pem https://www.example.com/
+```
+Note: if you get an error saying this:
+```
+ERROR 2018-09-07T17:27:08Z: servo: Couldn't not find certificate file: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+```
+Then make sure you have entered the correct path for `proxy-certs/pywb-ca.pem`. It should be in the same directory that your venv is in.
 
-Once the site has finished loading, exit Servo and the `wayback` server.
+Once the site has finished loading, exit Servo, and then quit the `wayback` server.
 
-To test your archive, follow the instructions for playing an archive. In one window:
+To test your archive, follow the instructions for playing an archive. In the venv:
 ```
 wayback --proxy Example --port 8321
 ```
 
-and in another:
+and in the servo-warc-tests directory:
 ```
-proxychains ${SERVO_DIRECTORY}/mach run -r --certificate-path proxy-certs/pywb-ca.pem https://www.example.com/
+proxychains ${SERVO_DIRECTORY}/mach run -r --certificate-path ~/proxy-certs/pywb-ca.pem https://www.example.com/
 ```
