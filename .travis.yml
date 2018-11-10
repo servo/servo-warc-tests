@@ -3,8 +3,5 @@ language: bash
 # Use container-based infrastructure for quicker build start-up
 sudo: false
 
-notifications:
-  webhooks: http://build.servo.org:54856/travis
-
 script:
  - bash -c 'shellcheck run-warc-tests.sh'
