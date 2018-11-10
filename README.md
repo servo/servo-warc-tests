@@ -6,7 +6,7 @@ This directory contains web archives, together with scripts which use them for p
 
 ## Web archives
 
-[WARC web archives](http://iipc.github.io/warc-specifications/) are a de facto standard for archiving web content. They are the storage format for the Internet Archive [Wayback Machine](https://archive.org/web/) and supported by the [Library of Congress](http://www.loc.gov/preservation/digital/formats/fdd/fdd000236.shtml).
+[WARC web archives](https://iipc.github.io/warc-specifications/) are a de facto standard for archiving web content. They are the storage format for the Internet Archive [Wayback Machine](https://archive.org/web/) and supported by the [Library of Congress](http://www.loc.gov/preservation/digital/formats/fdd/fdd000236.shtml).
 
 Web archives can be [created and viewed](https://github.com/servo/servo/wiki/Creating-and-viewing-WARC-web-archives-in-Servo) in Servo, using the [pywb](https://pywb.readthedocs.io) tools, which can be installed using:
 ```
