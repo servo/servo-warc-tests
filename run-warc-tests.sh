@@ -17,9 +17,9 @@ ARCHIVES="${SCRIPT_DIR}/ARCHIVES"
 
 SERVO_DIR=$(readlink -f "${SERVO_DIR:-../servo}")
 SERVO_CMD=("${SERVO_DIR}/mach" "run" "-r" "-z"
-  "--userscripts" "${SCRIPT_DIR}/user-agent-js"
-  "--certificate-path" "${SCRIPT_DIR}/proxy-certs/pywb-ca.pem"
-  "--pref" "dom.testperf.enabled")
+  "--userscripts=${SCRIPT_DIR}/user-agent-js"
+  "--certificate-path=${SCRIPT_DIR}/proxy-certs/pywb-ca.pem"
+  "--pref=dom.testperf.enabled")
 
 OUTPUT_DIR=$(readlink -f "${OUTPUT_DIR:-output}")
 OUTPUT="${OUTPUT_DIR}/warc-tests-${DATE}.csv"
